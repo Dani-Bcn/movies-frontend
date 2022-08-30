@@ -1,23 +1,26 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route ,Outlet} from 'react-router-dom';
 import Home from './views/Home';
-import Movie from './views/Movie';
-import Edit from './views/Edit';
+import Movie from './components/Movie'
+import Movies from './views/Movies';
+import Edit from './components/Edit';
 import New from './views/New';
-
+import Navbar from './components/Navbar';
 function App() {
   return (
     <div className="App">
       <h1>Movies app</h1>
-      {/* Should import a navbar to browse through the pages Home and New and should have a "go back" button */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/movie/:id" element={<Movie />} />
-        <Route path="/edit/:id" element={<Edit />} />
+      <Navbar></Navbar>
+        <Routes>      
+          <Route path="/" element={<Home />}/> 
+          <Route path='movies' element={<Movies />}/>        
+          <Route path="new" element={<New />} />       
+          <Route path="edit/:id" element={<Edit />} />
+          <Route path="home/:id" element={<Movie />} /> 
+
       </Routes>
+    
     </div>
   );
 }
-
 export default App;
